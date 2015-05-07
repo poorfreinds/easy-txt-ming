@@ -1,0 +1,19 @@
+library(shiny)
+shinyUI(fluidPage(
+  titlePanel("简单政府工作报告文本挖掘器"),
+  sidebarLayout(
+    sidebarPanel(
+      helpText("对用户上传的政府文件进行文本挖掘"),
+      a("什么是文本挖掘",href="http://wiki.pinggu.org/doc-view-46517.html"),
+      fileInput("data","选择政府文件(txt格式)"),
+      fileInput("stopword","选择停词文件(txt格式)")
+    ),
+    mainPanel(
+      tabsetPanel(
+        tabPanel("词云",plotOutput("词云")),
+        tabPanel("频数",verbatimTextOutput("频数")),
+        type="pills"
+      )
+    )
+  ))
+)
